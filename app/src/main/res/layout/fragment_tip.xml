@@ -9,7 +9,7 @@
             name="tipFragment"
             type="eu.tutorials.tip.TipFragment" />
         <variable
-            name="viewModel"
+            name="tipViewModel"
             type="eu.tutorials.tip.model.TipViewModel" />
     </data>
 
@@ -23,26 +23,27 @@
             android:padding="16dp">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/image_view"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_store"
-                app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+                app:layout_constraintBottom_toBottomOf="@+id/text_input_layout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
+                app:layout_constraintTop_toTopOf="@+id/text_input_layout" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/text_input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageView"
+                app:layout_constraintStart_toEndOf="@id/image_view"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputEditText"
+                    android:id="@+id/text_input_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/cost_of_service"
@@ -50,78 +51,80 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/image_view_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_service"
-                app:layout_constraintTop_toTopOf="@+id/textView"
-                app:layout_constraintBottom_toBottomOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="@+id/text_view"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/text_view"
+                style="@style/Widget.TipTime.TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/how_was_the_service"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+                app:layout_constraintStart_toEndOf="@+id/image_view_2"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout" />
 
             <RadioGroup
-                android:id="@+id/radioGroup"
+                android:id="@+id/radio_group"
+                style="@style/Widget.Tip.CompoundButton.RadioButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:checkedButton="@id/amazingRadioButton"
+                android:checkedButton="@id/amazing_radio_button"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView">
+                app:layout_constraintStart_toStartOf="@+id/text_view"
+                app:layout_constraintTop_toBottomOf="@+id/text_view">
 
                 <RadioButton
-                    android:id="@+id/amazingRadioButton"
+                    android:id="@+id/amazing_radio_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/amazing"
-                    android:onClick="@{() -> viewModel.setPercentage(0.2)}"/>
+                    android:onClick="@{() -> tipViewModel.setPercentage(0.2)}"
+                    android:text="@string/amazing" />
 
                 <RadioButton
-                    android:id="@+id/goodRadioButton"
+                    android:id="@+id/good_radio_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/good"
-                    android:onClick="@{() -> viewModel.setPercentage(0.18)}"/>
+                    android:onClick="@{() -> tipViewModel.setPercentage(0.18)}"
+                    android:text="@string/good" />
 
                 <RadioButton
-                    android:id="@+id/okayRadioButton"
+                    android:id="@+id/okay_radio_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/okay"
-                    android:onClick="@{() -> viewModel.setPercentage(0.15)}"/>
+                    android:onClick="@{() -> tipViewModel.setPercentage(0.15)}"
+                    android:text="@string/okay" />
             </RadioGroup>
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/image_view_3"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_round_up"
-                app:layout_constraintBottom_toBottomOf="@+id/switchMaterial"
+                app:layout_constraintBottom_toBottomOf="@+id/switch_material"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/switchMaterial" />
+                app:layout_constraintTop_toTopOf="@+id/switch_material" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/switchMaterial"
+                android:id="@+id/switch_material"
+                style="@style/Widget.Tip.CompoundButton.Switch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/round_up_tip"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+                app:layout_constraintStart_toEndOf="@+id/image_view_3"
+                app:layout_constraintTop_toBottomOf="@+id/radio_group" />
 
             <Button
                 android:id="@+id/button"
@@ -131,18 +134,19 @@
                 android:text="@string/calculate"
                 android:onClick="@{() -> tipFragment.onCalculate()}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/switchMaterial"
-                app:layout_constraintTop_toBottomOf="@+id/switchMaterial" />
+                app:layout_constraintStart_toStartOf="@+id/switch_material"
+                app:layout_constraintTop_toBottomOf="@+id/switch_material" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/text_view_3"
+                style="@style/Widget.TipTime.TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@{@string/tip_amount(viewModel.tip)}"
+                android:text="@{@string/tip_amount(tipViewModel.tip)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button"
-                tools:text="@string/tip_amount" />
+                tools:text="Tip Amount: R20,00" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

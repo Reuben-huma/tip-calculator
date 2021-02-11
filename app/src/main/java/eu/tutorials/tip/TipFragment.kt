@@ -12,8 +12,8 @@ import eu.tutorials.tip.model.TipViewModel
 
 class TipFragment : Fragment() {
 
-    private val tipViewModel: TipViewModel by viewModels()
     private lateinit var binding: FragmentTipBinding
+    private val viewModel: TipViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentTipBinding.inflate(inflater, container, false)
@@ -25,15 +25,15 @@ class TipFragment : Fragment() {
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = tipViewModel
             tipFragment = this@TipFragment
+            tipViewModel = viewModel
         }
 
-        binding.switchMaterial.setOnCheckedChangeListener{ _,value -> Toast.makeText(context, "Checked is $value", Toast.LENGTH_SHORT).show() }
+        binding.switchMaterial.setOnCheckedChangeListener{ _ , value -> Toast.makeText(context, "Checked is $value", Toast.LENGTH_SHORT).show() }
     }
 
     fun onCalculate() {
-        tipViewModel.setTip(binding.textInputEditText.text.toString())
+        viewModel.setTip(binding.textInputEditText.text.toString())
     }
 
 }

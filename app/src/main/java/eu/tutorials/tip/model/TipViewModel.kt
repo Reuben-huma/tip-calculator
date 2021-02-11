@@ -8,17 +8,15 @@ import java.text.NumberFormat
 
 class TipViewModel: ViewModel() {
     private var percentage: Double = 0.2
-    private val _tip = MutableLiveData<Double>(0.0)
-    val tip: LiveData<String> = Transformations.map(_tip) {
-        NumberFormat.getCurrencyInstance().format(it)
-    }
+    private val _tip = MutableLiveData(0.0)
+    val tip: LiveData<String> = Transformations.map(_tip) { NumberFormat.getCurrencyInstance().format(it) }
 
     fun setPercentage(_percentage: Double) {
         percentage = _percentage
     }
 
-    fun setTip(_amount: String) {
-        _tip.value = _amount.toDouble() * percentage
+    fun setTip(_amount: String?) {
+        _tip.value = _amount?.toDoubleOrNull()?.times(percentage) ?: 0.0
     }
 
     fun roundUpTip() {
